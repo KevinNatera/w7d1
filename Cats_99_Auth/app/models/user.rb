@@ -18,8 +18,13 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     def password=(password)
-        self.password_digest = BCrypt::Password.new(password)
+        self.password_digest = BCrypt::Password.create(password)
         @password = password
+    end
+
+    def is_password?(password)
+        password_object = BCrypt::Password.new(self.password_digest)
+        password_object.is_password?(password)
     end
 
     def ensure_session_token
