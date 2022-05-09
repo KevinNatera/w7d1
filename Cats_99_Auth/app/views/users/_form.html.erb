@@ -1,0 +1,8 @@
+<% if type == :edit_user_form %>
+  <% action_url = user_url(@user) %>
+  <% button_text = "Update User" %>
+<% elsif type == :new_user_form %>
+  <% action_url = users_url %>
+    <% button_text = "Create User" %>
+<% end %>
+
